@@ -1,9 +1,9 @@
-import time
-import requests
-import webbrowser
+
 import api_connect
 import get_collabs
 import remove_user
+from boxsdk import BoxAPIException
+
 
 def run():
     option = -1
@@ -29,7 +29,7 @@ def run():
                 
                 print(">>Get Collabs started<<\n")
                 try:
-                    get_collabs.main(access_token,refresh_token, folder_id, exclude_folder_ids)
+                    get_collabs.main(api_connect.ACCESS_TOKEN,api_connect.REFRESH_TOKEN, folder_id, exclude_folder_ids)
                     print("Finish running get_collabs\n")
                 except BoxAPIException as e:
                     print(f"BoxAPIException caught while finding collabs: {e}")
@@ -41,7 +41,7 @@ def run():
                     e.close()
             
             elif option == "1":
-                print(f"access_token: {access_token}\nrefresh_token: {refresh_token}\n")
+                print(f"access_token: {api_connect.ACCESS_TOKEN}\nrefresh_token: {api_connect.REFRESH_TOKEN}\n")
                 print(f"Start typing... {option}\n")
                 user_id = input("User ID: ")
                 folder_id = input("Folder to remove from\n" +
@@ -49,7 +49,7 @@ def run():
 
                 print(f"Removing user {user_id} from parent folder {folder_id}\n")
                 try:
-                    remove_user.main(access_token, user_id, folder_id)
+                    remove_user.main(api_connect.ACCESS_TOKEN, user_id, folder_id)
                     print(f"Finished removing user {user_id}")
                 except BoxAPIException as e:
                     print(f"BoxAPIException caught while removing user: {e}")
@@ -67,4 +67,4 @@ def run():
         api_connect.handle_box_exception(open("exception_file.txt", "w"), e)
     except Exception as e:
         print(f"Unexpected error during initial access token retrieval: {e}")
-        return f"{auth_code}"
+        return f"{api_connect.AUTH_CODE}"

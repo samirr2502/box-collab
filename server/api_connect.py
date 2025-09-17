@@ -1,14 +1,19 @@
 import requests
 import time
-CLIENT_ID = "020r4pyyewrt5si70y5mtvsg4g6kl3qq"
-CLIENT_SECRET = "aInyr3WzN8XlOEyZYy8yptsD6siBHW5d"
+import json
+
+# Load config once
+with open("config.json") as f:
+    config = json.load(f)
+CLIENT_ID = config.CLIENT_ID
+CLIENT_SECRET = config.CLIENT_SECRET
 
 
 AUTH_CODE = ''
 ACCESS_TOKEN = ''
 REFRESH_TOKEN =''
-DEV_TOKEN ='ST5Sr32IgJnUGnZcjbZApD5kZod6F9VW'
-REDIRECT_URI = "http://127.0.0.1:5000"
+DEV_TOKEN =config.DEV_TOKEN
+REDIRECT_URI = config.REDIRECT_URI
 token_url = "https://api.box.com/oauth2/token"
 
 #print(f'authcode: {AUTH_CODE}\n')

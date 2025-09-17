@@ -12,7 +12,7 @@ lock = threading.Lock()
 
 
 def look_into_folders(client,file,removed_from, user_id,folder_id):
-
+    work_type="main"
     log = f'[{work_type}] started folder look up for folder: {client.folder(folder_id=folder_id).get().name} - {folder_id}\n'
     file.write(log)
     print(log)

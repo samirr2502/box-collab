@@ -5,7 +5,6 @@ import api_connect
 import json
 #GLOBAL VARIABLES
 REFRESH_TOKEN= ''
-DEV_TOKEN = "GcDK9FKHuyJgy1MvPDJRtKDylT2z0M2Z"
 TIME_TO_REFRESH = 50*60
 
 
