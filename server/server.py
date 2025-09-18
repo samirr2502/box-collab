@@ -59,7 +59,6 @@ def callback():
     folder_id = request.args.get("folderId")
     exclude_ids = request.args.get("excludeFolderIds", "")
     # Convert exclude IDs to a list
-    exclude_list = []
 
     #get refresh token
     refresh_token = request.args.get("refreshToken")
