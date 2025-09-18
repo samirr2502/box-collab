@@ -1,6 +1,4 @@
-from boxsdk import Client, OAuth2, BoxAPIException
-import time
-from datetime import datetime
+from boxsdk import Client, OAuth2
 # from server import api_connect
 #GLOBAL VARIABLES
 REFRESH_TOKEN= ''
@@ -8,7 +6,6 @@ DEV_TOKEN = "GcDK9FKHuyJgy1MvPDJRtKDylT2z0M2Z"
 TIME_TO_REFRESH = 50*60
 
 def start_connection(access_token, refresh_token):
-    REFRESH_TOKEN = refresh_token
 
     print("started box connection\n")
     #Create Connection 
@@ -21,7 +18,6 @@ def start_connection(access_token, refresh_token):
 def main(access_token, refresh_token,folder_id):
     #start connection
     client = start_connection(access_token,refresh_token)
-    start= time.time()
     print("call got to server\n")
     folders = client.folder(folder_id=folder_id).get_items()
     f_ = [{folder.id: folder.name} for folder in folders]

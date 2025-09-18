@@ -1,8 +1,7 @@
-from boxsdk import Client, OAuth2, BoxAPIException
+from boxsdk import Client, OAuth2
 import time
 from datetime import datetime
 from server import api_connect
-import json
 #GLOBAL VARIABLES
 REFRESH_TOKEN= ''
 TIME_TO_REFRESH = 50*60
@@ -26,7 +25,7 @@ def find_collabs(work_type,client, log_file,collab_file,path,parent_folder_id, f
         access_given_by = getattr(collab.created_by, "name", None) 
         if (user is not None and user.id not in parent_collab_ids):
             user_login = getattr(user, "login", None) 
-            print(f'    >> Found collab:\n')
+            print('    >> Found collab:\n')
             print(f'            >[{work_type}],{user.type.capitalize()},{user.id},{user.name},{user_login},{folder_id},{folder_name},{owner},{access_given_by},{path},{collab.id}\n')
             log_file.write(f'       >>[{work_type}],{user.type.capitalize()},{user.id},{user.name},{user_login},{folder_id},{folder_name},{owner},{access_given_by},{path},{collab.id}\n')
             collab_file.write(f'[{work_type}],{user.type.capitalize()},{user.id},{user.name},{user_login},{folder_id},{folder_name},{owner},{access_given_by},{path},{collab.id}\n')
@@ -40,7 +39,7 @@ def find_items(work_type,client, log_file, folder_id):
 
 
 def start_connection(access_token, refresh_token):
-    REFRESH_TOKEN = refresh_token
+    # REFRESH_TOKEN = refresh_token
 
     print("started box connection\n")
     #Create Connection 
@@ -111,12 +110,12 @@ def main(access_token, refresh_token,folder_id, exclude_folder_ids):
         log_file.write(f'Folder: {working_folder[0]} {working_folder_name}. Level: {len(working_folder[2])}\n  Path: {working_folder[2]}\n')        
         
         #find collabs of working folder:
-        print(f'    Collaborators: \n')
-        log_file.write(f'   Collaborators: \n')
+        print('    Collaborators: \n')
+        log_file.write('   Collaborators: \n')
         find_collabs("stack_loop", client, log_file, collab_file,working_folder[2],working_folder[1], working_folder[0],working_folder_name)
 
-        print(f'    Items: \n')
-        log_file.write(f'   Items: \n')
+        print('    Items: \n')
+        log_file.write('   Items: \n')
 
 
         #find items under working folder        

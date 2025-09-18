@@ -1,10 +1,8 @@
 from flask import Flask, request, redirect, jsonify,send_from_directory
 import api_connect
 import get_collabs
-import remove_user
 import get_items
 import terminal_view
-import api_get_auth_code
 import os
 import json
 PORT = 5000
@@ -28,9 +26,9 @@ def index(path):
         return send_from_directory(TEMPLATE_DIR, 'index.html')
 
 
-@app.route("/get_box_access")
-def get_access():
-    response = api_get_auth_code.main()
+# @app.route("/get_box_access")
+# def get_access():
+#     response = api_get_auth_code.main()
     
 
 @app.route("/auth")

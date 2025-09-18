@@ -1,6 +1,5 @@
-from boxsdk import Client, OAuth2, BoxAPIException
+from boxsdk import Client, OAuth2
 import threading
-from server import api_connect
 #GLOBAL VARIABLES
 ACCESS_TOKEN = ''
 REFRESH_TOKEN= ''
@@ -62,8 +61,6 @@ def main(access_token,user_id, folder_id):
     print("[] API call get().name from user{user_id}\n")
     
 
-    folder_name = client.folder(folder_id=folder_id).get().name
-    user_name = "test"
     #Open Files to log
     log_file_name= f'result/remove/log_del_u_{user_id}_f{folder_id}.txt'
     removed_from_name= f'result/remove/del_u_{user_id}_f_{folder_id}.csv'
