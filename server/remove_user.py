@@ -1,6 +1,6 @@
 from boxsdk import Client, OAuth2, BoxAPIException
 import threading
-import api_connect
+from server import api_connect
 #GLOBAL VARIABLES
 ACCESS_TOKEN = ''
 REFRESH_TOKEN= ''

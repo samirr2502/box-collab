@@ -20,7 +20,7 @@ const Collabs = ({ refreshToken, setRefreshToken, accessToken }) => {
     e.preventDefault();
     if (!folderId) return;
 
-    fetch(`http://127.0.0.1:5000/get_items?folderId=${folderId}&refreshToken=${refreshToken}&accessToken=${accessToken}`, {
+    fetch(`https://box-collab.samirrodriguez.click/get_items?folderId=${folderId}&refreshToken=${refreshToken}&accessToken=${accessToken}`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -36,7 +36,7 @@ const Collabs = ({ refreshToken, setRefreshToken, accessToken }) => {
 
   const handleGetMainItems = (e) => {
     if (e) e.preventDefault();
-    fetch(`http://127.0.0.1:5000/get_items?folderId=0&refreshToken=${refreshToken}&accessToken=${accessToken}`, {
+    fetch(`https://box-collab.samirrodriguez.click/get_items?folderId=0&refreshToken=${refreshToken}&accessToken=${accessToken}`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -57,7 +57,7 @@ const Collabs = ({ refreshToken, setRefreshToken, accessToken }) => {
       return;
     }
 
-    fetch(`http://127.0.0.1:5000/get_items?folderId=${folderId}&refreshToken=${refreshToken}&accessToken=${accessToken}`)
+    fetch(`https://box-collab.samirrodriguez.click/get_items?folderId=${folderId}&refreshToken=${refreshToken}&accessToken=${accessToken}`)
       .then(res => res.json())
       .then(data => {
         setOpenItemId(folderId);
@@ -72,7 +72,7 @@ const Collabs = ({ refreshToken, setRefreshToken, accessToken }) => {
     e.preventDefault();
     setLoading(true);
     setIsCompleted(false);
-    fetch(`http://127.0.0.1:5000/get_collabs?folderId=${folderId}&excludeFolderIds=${excludeFolderIds}&refreshToken=${refreshToken}&accessToken=${accessToken}`, {
+    fetch(`https://box-collab.samirrodriguez.click/get_collabs?folderId=${folderId}&excludeFolderIds=${excludeFolderIds}&refreshToken=${refreshToken}&accessToken=${accessToken}`, {
       method: 'GET',
     })
       .then((res) => res.json())
@@ -112,7 +112,7 @@ const Collabs = ({ refreshToken, setRefreshToken, accessToken }) => {
         }));
       } else {
         // Fetch and expand
-        fetch(`http://127.0.0.1:5000/get_items?folderId=${folderId}&refreshToken=${refreshToken}&accessToken=${accessToken}`)
+        fetch(`https://box-collab.samirrodriguez.click/get_items?folderId=${folderId}&refreshToken=${refreshToken}&accessToken=${accessToken}`)
           .then(res => res.json())
           .then(data => {
             setExpandedFolders(prev => ({
@@ -160,7 +160,7 @@ const Collabs = ({ refreshToken, setRefreshToken, accessToken }) => {
     );
   };
   useEffect(() => {
-    fetch(`http://127.0.0.1:5000/get_items?folderId=0&refreshToken=${refreshToken}&accessToken=${accessToken}`)
+    fetch(`https://box-collab.samirrodriguez.click/get_items?folderId=0&refreshToken=${refreshToken}&accessToken=${accessToken}`)
       .then(res => res.json())
       .then(data => {
         setMainItems(data);

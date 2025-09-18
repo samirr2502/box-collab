@@ -7,7 +7,7 @@ const Home = ({ refreshToken, setRefreshToken }) => {
 
   const handleBoxAccess = () => {
     const clientId = '020r4pyyewrt5si70y5mtvsg4g6kl3qq';
-    const redirectUri = 'http://127.0.0.1:5000/auth'; // must match Box app settings
+    const redirectUri = 'https://box-collab.samirrodriguez.click/auth'; // must match Box app settings
   
     const boxAuthUrl = `https://account.box.com/api/oauth2/authorize?response_type=code&client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}`;
   

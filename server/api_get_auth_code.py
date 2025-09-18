@@ -1,10 +1,19 @@
 import requests
-
+import json
+import os
 import webbrowser
+# Load config once
+script_dir = os.path.dirname(__file__)
+file_path = os.path.join(script_dir, "serverconfig.json")
+
+with open(file_path) as f:
+    config = json.load(f)
+CLIENT_SECRET = config["CLIENT_SECRET"]
 
 def main():
-    CLIENT_ID = "020r4pyyewrt5si70y5mtvsg4g6kl3qq"
-    REDIRECT_URI = "http://127.0.0.1:5000/auth"
+    CLIENT_ID = config["CLIENT_ID"]
+
+    REDIRECT_URI = config["REDIRECT_URI"]
 
 
     auth_code_url = f"https://account.box.com/api/oauth2/authorize?response_type=code&client_id={CLIENT_ID}&redirect_uri={REDIRECT_URI}"

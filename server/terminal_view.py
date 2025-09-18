@@ -1,7 +1,5 @@
 
-import api_connect
-import get_collabs
-import remove_user
+from server import api_connect, get_collabs, remove_user
 from boxsdk import BoxAPIException
 
 

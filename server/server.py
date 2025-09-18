@@ -1,21 +1,23 @@
-from flask import Flask, request, render_template, redirect, jsonify,send_from_directory
-import time
-import requests
-import webbrowser
+from flask import Flask, request, redirect, jsonify,send_from_directory
 import api_connect
 import get_collabs
 import remove_user
 import get_items
 import terminal_view
 import api_get_auth_code
-from boxsdk import BoxAPIException
 import os
+import json
 PORT = 5000
 
 TEMPLATE_DIR = os.path.abspath('./box-collab/dist')
 STATIC_DIR = os.path.abspath('./box-collab/dist/assets')
 app = Flask(__name__,  template_folder=TEMPLATE_DIR, static_folder=STATIC_DIR)
+script_dir = os.path.dirname(__file__)
+file_path = os.path.join(script_dir, "serverconfig.json")
 
+with open(file_path) as f:
+    config = json.load(f)
+REDIRECT_URI = config["REDIRECT_URI"]
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
@@ -40,7 +42,7 @@ def get_auth_token():
     # Get authtoken from box
     access_token, refresh_token = api_connect.get_access_token(auth_code)
     print(f"access_token: {access_token}\nrefresh_token: {refresh_token}\n")
-    return redirect(f"http://127.0.0.1:5000?refreshToken={refresh_token}&accessToken={access_token}")
+    return redirect(f"{REDIRECT_URI}?refreshToken={refresh_token}&accessToken={access_token}")
 
 @app.route("/auth_terminal")
 def get_auth_token_term():
@@ -87,5 +89,5 @@ def get_items_box():
     return jsoned
 
 if __name__ == "__main__":
-    app.run(port=PORT)
+    app.run(host= "127.0.0.1", port=PORT)
     

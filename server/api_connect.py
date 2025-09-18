@@ -1,19 +1,23 @@
 import requests
 import time
 import json
+import os
 
 # Load config once
-with open("config.json") as f:
+script_dir = os.path.dirname(__file__)
+file_path = os.path.join(script_dir, "serverconfig.json")
+
+with open(file_path) as f:
     config = json.load(f)
-CLIENT_ID = config.CLIENT_ID
-CLIENT_SECRET = config.CLIENT_SECRET
+CLIENT_ID = config["CLIENT_ID"]
+CLIENT_SECRET = config["CLIENT_SECRET"]
 
 
 AUTH_CODE = ''
 ACCESS_TOKEN = ''
 REFRESH_TOKEN =''
-DEV_TOKEN =config.DEV_TOKEN
-REDIRECT_URI = config.REDIRECT_URI
+DEV_TOKEN =config["DEV_TOKEN"]
+REDIRECT_URI = config["REDIRECT_URI"]
 token_url = "https://api.box.com/oauth2/token"
 
 #print(f'authcode: {AUTH_CODE}\n')

@@ -3,8 +3,8 @@
   "CLIENT_SECRET": "aInyr3WzN8XlOEyZYy8yptsD6siBHW5d",
 
 
-  "DEV_TOKEN": "GcDK9FKHuyJgy1MvPDJRtKDylT2z0M2Z",
+  "DEV_TOKEN": "ifV3EFPVdgLH8HPAB0vvob6DgQvpz3DO",
   "ACCESS_TOKEN": "your-access-token-here",
 
-  "REDIRECT-URI":"http://127.0.0.1:5000"
+  "REDIRECT_URI":"https://box-collab.samirrodriguez.click"
 }

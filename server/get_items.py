@@ -1,7 +1,7 @@
 from boxsdk import Client, OAuth2, BoxAPIException
 import time
 from datetime import datetime
-import api_connect
+# from server import api_connect
 #GLOBAL VARIABLES
 REFRESH_TOKEN= ''
 DEV_TOKEN = "GcDK9FKHuyJgy1MvPDJRtKDylT2z0M2Z"
