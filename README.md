@@ -9,6 +9,6 @@ Tool to make request to Box API and manage users in your tree of folders
 # Usage
 If you want to clone this repo, for now, you need to get your own secret key and developer token from the Box Developer portal
 You can use the app only to log in right now, but eventually the other services will be working:
-** Get collaborators
-** Get items in folder
-** Remove Collaboratos in folder tree
+* Get collaborators
+* Get items in folder
+* Remove Collaboratos in folder tree
